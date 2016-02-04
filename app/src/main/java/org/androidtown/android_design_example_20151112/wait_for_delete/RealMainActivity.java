@@ -1,30 +1,22 @@
-package org.androidtown.android_design_example_20151112;
+package org.androidtown.android_design_example_20151112.wait_for_delete;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Adapter;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
+
+import org.androidtown.android_design_example_20151112.R;
+import org.androidtown.android_design_example_20151112.wait_for_delete.FragReal_Matching;
 
 public class RealMainActivity extends AppCompatActivity {
-    Intent intent;
     ViewPager viewPager;
 
-    RelativeLayout layoutForAnim;
     private static String TAG = "RealActivity";
 
 
@@ -51,20 +43,9 @@ public class RealMainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
         Log.d(TAG, "################################## STEP 2 is completed");
 
-        layoutForAnim = (RelativeLayout) findViewById(R.id.frame_for_anim);
-
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home: // handle click event on home icon(drawer icon)
-                intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+
     class Adapter extends FragmentPagerAdapter
     {
 
@@ -75,9 +56,6 @@ public class RealMainActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch(position) {
                 case 0: return new FragReal_Matching();
-                case 1: return new FragReal_Team();
-                case 2: return new FragReal_League();
-                case 3: return new FragReal_Event();
                 default:
                     return null;
             }
@@ -85,16 +63,13 @@ public class RealMainActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 4;
+            return 1;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             switch(position) {
                 case 0: return "매칭";
-               case 1: return "팀";
-                case 2:return "리그";
-                case 3:return "이벤트";
                 default:
                     return null;
             }
